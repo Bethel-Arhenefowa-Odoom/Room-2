@@ -31,7 +31,7 @@ jobs:
 
       - name: Upload Results
         # Ensure the upload-artifact action version is correct and accessible
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: scan-results
           path: result.json
