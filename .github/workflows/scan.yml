@@ -21,7 +21,7 @@ jobs:
         run: |
           pip install trend-micro-cloud-one-conformity-cli
 
-      - name: Scan CloudFormation Template
+      - name: Run Conformity Scan
         run: |
           conformity scan \
             --api-key ${{ secrets.CONFORMITY_API_KEY }} \
