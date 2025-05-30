@@ -12,18 +12,16 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Check internet connection
-        run: curl -I https://github.com
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
       - name: Install Conformity CLI
-        run: pip install trend-micro-cloud-one-conformity-cli
+        run: |
+          pip install trend-micro-cloud-one-conformity-cli
 
-      - name: Run Conformity Scan
+      - name: Scan CloudFormation Template
         run: |
           conformity scan \
             --api-key ${{ secrets.CONFORMITY_API_KEY }} \
@@ -32,6 +30,7 @@ jobs:
             --output result.json
 
       - name: Upload Results
+        # Ensure the upload-artifact action version is correct and accessible
         uses: actions/upload-artifact@v3
         with:
           name: scan-results
